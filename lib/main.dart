@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/material.dart';
 import 'package:loja_texas/app/model/produto.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +36,7 @@ import 'app/usuario/editar_dados_usuario_view.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final TrackingStatus status = await AppTrackingTransparency.requestTrackingAuthorization();
   HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }

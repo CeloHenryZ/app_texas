@@ -1,3 +1,4 @@
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,6 +44,17 @@ class _RegistrarUsuarioViewState extends State<RegistrarUsuarioView> {
     setState(() {
       checked = value;
     });
+  }
+
+  late TrackingStatus status;
+  _acceptAdress() async {
+    status = await AppTrackingTransparency.requestTrackingAuthorization();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _acceptAdress();
   }
 
   @override
